@@ -753,7 +753,7 @@ async function saveProduct() {
     if (!res.ok) { const e = await res.json(); throw new Error(e.error || 'Server error'); }
     await loadProducts();
     closeModal('productModal');
-    notify(editingId ? '✓ Product updated' : '✓ New product added', 'success');
+    notify(editingId ? '✓ Product updated' : '✓ New product added', 'Success');
   } catch(e) {
     notify('Error: ' + e.message, 'error');
   }
