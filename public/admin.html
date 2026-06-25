@@ -234,14 +234,15 @@ textarea.finput{resize:vertical;min-height:80px;line-height:1.5}
   .td-desc,.td-tags{display:none}
 }
 </style>
+  <link rel="icon" type="image/svg+xml" href="/images/logo.svg">
 </head>
 <body>
 
 <!-- ══ LOGIN ══════════════════════════════════════════════════════════ -->
 <div id="loginScreen">
   <div class="login-box">
-    <div class="login-logo">Zen<span>trix</span> IoT</div>
-    <div class="login-sub">Seller admin panel — sign in to continue</div>
+    <div class="login-logo"><img src="/images/logo.svg" alt="Zentrix IoT" style="height:38px;width:auto;display:block;margin:0 auto 8px"></div>
+    <div class="login-sub">Zentrix IoT · Coimbatore, Tamil Nadu — Seller panel</div>
     <div class="login-err" id="loginErr">Incorrect username or password</div>
     <div class="form-group">
       <label class="flab">Username</label>
@@ -267,7 +268,7 @@ textarea.finput{resize:vertical;min-height:80px;line-height:1.5}
 
     <!-- SIDEBAR -->
     <aside class="sidebar">
-      <div class="sb-brand">Zen<span>trix</span> IoT</div>
+      <div class="sb-brand"><img src="/images/logo.svg" alt="Zentrix IoT" style="height:28px;width:auto;display:block;filter:brightness(1)"></div>
       <div class="sb-label">Catalogue</div>
       <div class="sb-link active" onclick="showView('products')"><span class="icon">📦</span>Products</div>
       <div class="sb-link" onclick="window.open('/','_blank')"><span class="icon">🌐</span>View storefront ↗</div>
@@ -753,7 +754,7 @@ async function saveProduct() {
     if (!res.ok) { const e = await res.json(); throw new Error(e.error || 'Server error'); }
     await loadProducts();
     closeModal('productModal');
-    notify(editingId ? '✓ Product updated' : '✓ New product added', 'Success');
+    notify(editingId ? '✓ Product updated' : '✓ New product added', 'success');
   } catch(e) {
     notify('Error: ' + e.message, 'error');
   }
