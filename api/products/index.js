@@ -16,8 +16,8 @@ module.exports = async (req, res) => {
   if (req.method === 'GET') {
     const { cat } = req.query;
     const query   = cat ? { cat } : {};
-    const products = await col.find(query).sort({ _id: 1 }).toArray();
-    // strip Mongo _id, expose our id field
+    // Sort by sortOrder first, then by _id for stable ordering
+    const products = await col.find(query).sort({ sortOrder: 1, _id: 1 }).toArray();
     return res.status(200).json(products.map(cleanDoc));
   }
 
@@ -42,6 +42,7 @@ module.exports = async (req, res) => {
       tags:   Array.isArray(body.tags) ? body.tags : (body.tags ? JSON.parse(body.tags) : []),
       rating: body.rating || '5.0',
       custom: body.custom === true || body.custom === 'true',
+      specs:  Array.isArray(body.specs) ? body.specs : [],
       createdAt: new Date(),
     };
 

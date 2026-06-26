@@ -90,7 +90,7 @@ zentrix-vercel/
    | `SELLER_PASS` | `iotseller123` (change this!) |
 
 6. Click **Deploy** — Vercel builds and deploys in ~60 seconds
-7. You'll get a live URL like: `https://zentrix-iot.vercel.app`
+7. You'll get a live URL like: `https://zentrix-iot.vercel.app` (Coimbatore, Tamil Nadu)
 
 ---
 

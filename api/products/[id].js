@@ -27,20 +27,22 @@ module.exports = async (req, res) => {
     const body    = req.body || {};
     const updated = {
       ...cleanDoc(doc),
-      name:   body.name   !== undefined ? body.name.trim()         : doc.name,
-      desc:   body.desc   !== undefined ? body.desc.trim()         : doc.desc,
-      price:  body.price  !== undefined ? (parseInt(body.price)||0): doc.price,
-      cat:    body.cat    !== undefined ? body.cat                  : doc.cat,
-      badge:  body.badge  !== undefined ? body.badge               : doc.badge,
-      icon:   body.icon   !== undefined ? body.icon                : doc.icon,
-      img:    body.img    !== undefined ? body.img                 : doc.img,
-      tags:   body.tags   !== undefined
+      name:      body.name      !== undefined ? body.name.trim()           : doc.name,
+      desc:      body.desc      !== undefined ? body.desc.trim()           : doc.desc,
+      price:     body.price     !== undefined ? (parseInt(body.price)||0)  : doc.price,
+      cat:       body.cat       !== undefined ? body.cat                   : doc.cat,
+      badge:     body.badge     !== undefined ? body.badge                 : doc.badge,
+      icon:      body.icon      !== undefined ? body.icon                  : doc.icon,
+      img:       body.img       !== undefined ? body.img                   : doc.img,
+      tags:      body.tags      !== undefined
         ? (Array.isArray(body.tags) ? body.tags : JSON.parse(body.tags))
         : doc.tags,
-      rating: body.rating !== undefined ? body.rating              : doc.rating,
-      custom: body.custom !== undefined
+      rating:    body.rating    !== undefined ? body.rating                : doc.rating,
+      custom:    body.custom    !== undefined
         ? (body.custom === true || body.custom === 'true')
         : doc.custom,
+      sortOrder: body.sortOrder !== undefined ? Number(body.sortOrder)     : (doc.sortOrder ?? 999),
+      specs:     body.specs     !== undefined ? body.specs                  : (doc.specs || []),
       updatedAt: new Date(),
     };
 
